@@ -1,8 +1,6 @@
-const { User } = require('../models');
-const { uploader } = require('../utils/cloudinaryConfig');
-const { dataUri } = require('../middlewares/multerUpload')
-const { authenticate } = require('../utils/authenticate')
-const { createToken } = require('../utils/createToken')
+const User = require('../models/users.js');
+//const { authenticate } = require('../utils/authenticate')
+//const { createToken } = require('../utils/createToken')
 
 const signUp = async (req, res) => {
 	const user = await User.create(req.body).catch(e => {
