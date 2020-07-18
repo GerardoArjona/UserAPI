@@ -1,0 +1,11 @@
+{
+  "name": "arjona-miniproject-api",
+  "version": "1.0.0",
+  "description": "user api arjona miniproject",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerardo Arjona",
+  "license": "ISC"
+}
