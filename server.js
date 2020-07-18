@@ -7,13 +7,13 @@ const mongoose = require('mongoose');
 
 const cors = require('cors');
 
-// const MONGO = process.env.MONGODB_URI
+const MONGO = process.env.MONGODB_URI
 
-// mongoose.connect(MONGO,{ useNewUrlParser: true, useCreateIndex:true });
-// const mongo =  mongoose.connection;
+mongoose.connect(MONGO,{ useNewUrlParser: true, useCreateIndex:true });
+const mongo =  mongoose.connection;
 
-// mongo.on('error', (error) => console.log(error))
-// 	 .once('open', () => console.log("Connected to database"));
+mongo.on('error', (error) => console.log(error))
+	 .once('open', () => console.log("Connected to database"));
 
 
 const app = express()
@@ -29,7 +29,7 @@ app.use(morgan('dev'));
 //app.use('/api/v1',routes)
 
 app.get('/',(req,res) => {
-	res.send("Hola mundo")
+	res.send("Hello World")
 })
 
 app.listen(PORT,() =>{
