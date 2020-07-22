@@ -1,6 +1,6 @@
 const User = require('../models/users.js');
-//const { authenticate } = require('../utils/authenticate')
-//const { createToken } = require('../utils/createToken')
+const { authenticate } = require('../utils/authenticate')
+const { createToken } = require('../utils/createToken')
 
 const signUp = async (req, res) => {
 	const user = await User.create(req.body).catch(e => {
@@ -37,13 +37,15 @@ const findOne = async (req, res) => {
     });
 }
 
-const login = async (req, res) => {
+const signin = async (req, res) => {
 	authenticate(req.body).then((user) => {
 		if (!user) res.send(404).json({ message: "User not found" });
 		const token = createToken(user);
 		res.status(200).json({ token });
-	}).catch(e => res.status(400).json({e})); 
-
+    }).catch(e => {
+        console.log(e)
+        res.status(400).json({e})
+}); 	
 }
 
 const update = async (req, res) => {
@@ -103,7 +105,7 @@ module.exports = {
 	signUp,
     listUsers,
     findOne,
-	login, 
+	signin, 
     update,
     deleteUser
 }
