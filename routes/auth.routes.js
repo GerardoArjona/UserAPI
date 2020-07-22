@@ -3,8 +3,8 @@ const users = require('../controllers/users.controllers');
 
 const router = express.Router();
 
-router.post('/signin', users.signin); //Update User
+// router.post('/signin', users.signin); //Login User
 
-router.get('/signout', users.signout); //Delete user
+// router.get('/signout', users.signout); //Logout user
 
 module.exports = router

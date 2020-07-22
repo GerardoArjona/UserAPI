@@ -16,6 +16,27 @@ const listUsers = async (req, res) => {
 	res.status(200).json(users)
 }
 
+const findOne = async (req, res) => {
+    User.findById(req.params.userId)
+    .then(user => {
+        if(!user) {
+            return res.status(404).send({
+                message: "Company not found with id " + req.params.userId
+            });            
+        }
+        res.send(user);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "User not found with id " + req.params.userId
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving user with id " + req.params.userId
+        });
+    });
+}
+
 const login = async (req, res) => {
 	authenticate(req.body).then((user) => {
 		if (!user) res.send(404).json({ message: "User not found" });
@@ -23,15 +44,13 @@ const login = async (req, res) => {
 		res.status(200).json({ token });
 	}).catch(e => res.status(400).json({e})); 
 
-
-	
 }
 
 const update = async (req, res) => {
     // Validate Request
     if(!req.body) {
         return res.status(400).send({
-            message: "Company content can not be empty"
+            message: "User content can not be empty"
         });
     }
 
@@ -82,7 +101,8 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
 	signUp,
-	listUsers,
+    listUsers,
+    findOne,
 	login, 
     update,
     deleteUser
