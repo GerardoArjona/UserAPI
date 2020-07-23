@@ -3,6 +3,7 @@ const { authenticate } = require('../utils/authenticate')
 const { createToken } = require('../utils/createToken')
 
 const signUp = async (req, res) => {
+    console.log(req.body)
 	const user = await User.create(req.body).catch(e => {
         console.log(e)
        res.status(400).json(e) 
