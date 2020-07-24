@@ -7,14 +7,14 @@ Date.prototype.addDays = function(days){
 	return date;
 }
 
-const createToken = ({email,first_name,_id}) => {
+const createToken = ({email,name,_id}) => {
 
 	const exp = new Date().addDays(1).getTime(); 
 
 	const payload = {
 		_id,
 		email,
-		first_name,
+		name,
 		exp
 	}
 

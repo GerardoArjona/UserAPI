@@ -44,6 +44,7 @@ const signin = async (req, res) => {
 		const token = createToken(user);
 		res.status(200).json({ token });
     }).catch(e => {
+        console.log(e)
         res.status(400).json({e})
 }); 	
 }
