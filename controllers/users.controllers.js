@@ -18,7 +18,7 @@ const listUsers = async (req, res) => {
 }
 
 const findOne = async (req, res) => {
-    User.findById(req.params.userId)
+    User.findById(req.params.userId).select('-password')
     .then(user => {
         if(!user) {
             return res.status(404).send({
