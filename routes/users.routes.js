@@ -10,9 +10,7 @@ router.post('/', users.signUp); //Create User
 
 router.get('/', users.listUsers); //Get All User
 
-router.get('/:userId', authenticationMiddleware, users.findOne); //Get User by Id
-
-router.get('/byUsername/:username', authenticationMiddleware, users.findOneByUsername); //Get User by Id
+router.get('/byUsername/:username', authenticationMiddleware, users.findOneByUsername); //Get Username
 
 router.put('/:userId', authenticationMiddleware, users.update); //Update User
 
