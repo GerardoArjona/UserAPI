@@ -12,6 +12,8 @@ router.get('/', users.listUsers); //Get All User
 
 router.get('/:userId', authenticationMiddleware, users.findOne); //Get User by Id
 
+router.get('/byUsername/:username', authenticationMiddleware, users.findOneByUsername); //Get User by Id
+
 router.put('/:userId', authenticationMiddleware, users.update); //Update User
 
 router.delete('/:userId', authenticationMiddleware, users.deleteUser); //Delete user
