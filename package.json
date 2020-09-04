@@ -1,6 +1,6 @@
 {
   "name": "arjona-miniproject-api",
-  "version": "2.0",
+  "version": "2.0.0",
   "description": "user api arjona miniproject",
   "main": "index.js",
   "scripts": {
