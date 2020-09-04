@@ -13,12 +13,12 @@ const signUp = async (req, res) => {
 }
 
 const listUsers = async (req, res) => {
-	const users = await User.find({}).select('-password')
+	const users = await User.find({}).select('-password -createdAt -updatedAt')
 	res.status(200).json(users)
 }
 
 const findOne = async (req, res) => {
-    User.findById(req.params.userId).select('-password')
+    User.findById(req.params.userId).select('-password -createdAt -updatedAt')
     .then(user => {
         if(!user) {
             return res.status(404).send({
