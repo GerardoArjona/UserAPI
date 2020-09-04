@@ -29,7 +29,7 @@ app.use(morgan('dev'));
 app.use('/api',routes)
 
 app.get('/',(req,res) => {
-	res.send("Hello World")
+	res.send("UserAPI Up!")
 })
 
 app.listen(PORT,() =>{

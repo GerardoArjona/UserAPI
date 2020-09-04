@@ -51,6 +51,13 @@ const signin = async (req, res) => {
 
 const update = async (req, res) => {
     // Validate Request
+
+    if(req.user._id !== req.params.userId) {
+        return res.status(401).send({
+            message: "User can only update himself"
+        });
+    }
+
     if(!req.body) {
         return res.status(400).send({
             message: "User content can not be empty"
@@ -79,6 +86,13 @@ const update = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
+
+    if(req.user._id !== req.params.userId) {
+        return res.status(401).send({
+            message: "User can only delete himself"
+        });
+    }
+
     User.findByIdAndRemove(req.params.userId)
     .then(company => {
         if(!company) {
