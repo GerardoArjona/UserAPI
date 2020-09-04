@@ -4,6 +4,13 @@ const { createToken } = require('../utils/createToken')
 
 const signUp = async (req, res) => {
     console.log(req.body)
+
+    if(!req.body) {
+        return res.status(400).send({
+            message: "User content can not be empty"
+        });
+    }
+
 	const user = await User.create(req.body).catch(e => {
         console.log(e)
        res.status(400).json(e) 
